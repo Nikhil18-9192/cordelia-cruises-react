@@ -1,0 +1,237 @@
+
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+@mixin for-tablet-only {
+  @media (min-width: 600px) and (max-width: 768px) {
+    @content;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.rotate-icon{
+  animation: spin 2s linear infinite; 
+}
+
+.payment-method-selection{
+  height: 500px;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;  
+  position: absolute;  
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.tab{
+  border-left: 6px solid transparent;
+
+  &.active-tab{
+    border-left: 6px solid #95448e;
+    background: #fff;
+  }
+}
+
+.payment-details{
+  .right{
+    min-height: 500px;
+  }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add custom background and arrow */
+  background-image: url('./assets/arrow.png');
+  background-position: calc(100% - 20px) center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  padding-right: 20px; /* Adjust as needed to make space for the arrow */
+}
+.phone-header{
+  display: none;
+  @include for-phone-only{
+    display: flex;
+  }
+}
+.header{
+  @include for-phone-only{
+    display: none;
+  }
+}
+.payment-method-selection{
+  @include for-phone-only{
+    display: none;
+  }
+}
+.upi{
+  min-height: 450px;;
+  @include for-phone-only{
+    padding:  10px;
+    margin-bottom: 32px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.45);
+    border-radius: 10px;
+    .logos{
+      flex-wrap: wrap;
+      .logo-img{
+        width: 64px;
+        height: 34px;
+      }
+    }
+    .payment-btn{
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+}
+.cards{
+  min-height: 450px;
+  @include for-phone-only{
+    padding:  10px;
+    margin-bottom: 32px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.45);
+    border-radius: 10px;
+    
+    .payment-btn{
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+}
+
+.bank{
+  min-height: 450px;
+  @include for-phone-only{
+    padding:  10px;
+    min-height: 500px;
+    margin-bottom: 32px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.45);
+    border-radius: 10px;
+
+    .logos{
+      padding: 8px;
+      gap:10px;
+      .item{
+        margin: 0;
+        img{
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+    
+    .payment-btn{
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+}
+
+.payment-options-phone{
+  display: none;
+  @include for-phone-only{
+    display: block;
+  }
+}
+
+.payment-info{
+  .top-tab{
+    @include for-phone-only{
+      padding: 10px;
+      p{
+        font-size: 18px;
+      }
+    }
+  }
+  .middle-tab{
+    @include for-phone-only{
+      .item{
+        padding: 0 10px;
+        p{
+          font-size: 16px;
+        }
+      }
+      .taxes{
+        padding: 10px 0;
+      }
+    }
+
+  }
+}
+.phone-nav{
+  width: 80%;
+}
+
+/* PhoneNavbar.css */
+.phone-navbar-enter {
+  transform: translateX(100%);
+}
+
+.phone-navbar-enter-active {
+  transform: translateX(0);
+  transition: transform 300ms ease;
+}
+
+.phone-navbar-exit {
+  transform: translateX(0);
+}
+
+.phone-navbar-exit-active {
+  transform: translateX(100%);
+  transition: transform 300ms ease;
+}
+
+
+
+.fade-enter {
+  opacity: 0;
+  max-height: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  max-height: 1000px; /* Adjust based on your content */
+  transition: opacity 300ms ease, max-height 300ms ease;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 300ms ease, max-height 300ms ease;
+}

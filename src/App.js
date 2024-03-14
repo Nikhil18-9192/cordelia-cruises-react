@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Header from './components/Header';
+import Home from './components/Home';
+import PhoneHeader from './components/PhoneHeader';
+import {CSSTransition } from "react-transition-group";
+import PhoneNav from './components/PhoneNav';
+import { useContext } from 'react';
+import GlobalContext from './components/context/CreateContext';
 
 function App() {
+  const {state} = useContext(GlobalContext)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <PhoneHeader />
+      {state.toggle ? 
+         <CSSTransition
+         in={true}
+         timeout={300} // Duration of the transition in milliseconds
+         classNames="phone-navbar"
+         unmountOnExit
+       >
+        <PhoneNav />
+        </CSSTransition>
+        : null}
+      <Home />
     </div>
   );
 }
