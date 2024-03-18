@@ -42,7 +42,7 @@ function PaymentMethodSelection() {
 
             <button onClick={()=> handleTabClick('bank')} className={`tab w-full h-28 border-b-2 border-gray-400 bg-gray-100  flex items-start p-4 justify-between ${activeTab === 'bank' ? 'active-tab' : ''}`}>
             <img src={bank} alt="upi logo" className='w-1/5 h-6' /> 
-            <div className="text flex fpt-16lex-col justify-start items-start w-4/5">
+            <div className="text flex flex-col justify-start items-start w-4/5">
             <p className='font-bold text-base font-poppins'>Netbanking</p>
             <p className='text-sm text-left mt-2 font-poppins'>All Major banks available</p></div>
             </button>
